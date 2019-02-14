@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
+
+
+
 namespace ShowGo.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
@@ -29,5 +32,33 @@ namespace ShowGo.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Survey> Surveys { get; set; }
+        public DbSet<Concert> Concerts { get; set; }
+        public DbSet<Genre> Genres { get; set; }
+
+        public DbSet<Artist> Artists { get; set; }
+
+        public DbSet<Concertgoer> Concertgoers { get; set; }
+
+        public DbSet<RecommendedResult> RecommendedResults { get; set; }
+
+
+        public DbSet<Question> Questions { get; set; }
+
+        public DbSet<Choice> Choices { get; set; }
+
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<RecommendedResult>()
+        //    .HasRequired(x => x.Question)
+        //    .WithMany()
+        //    .HasForeignKey(x => x.QuestionId)
+        //    .WillCascadeOnDelete(false);
+
+        //    base.OnModelCreating(modelBuilder);
+        //}
+
+
     }
 }
