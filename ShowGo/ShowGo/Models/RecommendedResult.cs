@@ -7,10 +7,10 @@ namespace ShowGo.Models
     {
         [Key]
 
-        public int ResultsId { get; set; }
+        public int RecommendedResultId { get; set; }
 
-        public object Question { get; set; }
-        public int QuestionId { get; set; }
+        public string text { get; set; }
+
 
         [ForeignKey("Choice")]
         public int ChoiceId { get; set; }

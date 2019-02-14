@@ -8,34 +8,7 @@ namespace ShowGo.Models
     {
         [Key]
         public int QuestionId { get; set; }
-        public string Text { get; set; }
+        public string text { get; set;}
 
-        //[Display(Name ="")]
-        //[Required]
-        //public string questionLabel { get; set; }
-        //[Display(Name ="")]
-        //[Required]
-        //public string choiceA { get; set; }
-        //[Display(Name = "")]
-        //[Required]
-        //public string choiceB { get; set; } 
-        //[Display(Name ="")]
-        //[Required]
-        //public string choiceC { get; set; }
-        //[Display(Name ="")]
-        //[Required]
-        //public string choiceD { get; set; } 
-        //[Display(Name = "")]
-        //[Required]
-        //public string answer { get; set; }
-
-
-        public bool IsCorrect(string answer)
-        {
-            return String.Compare(answer, answer, true) == 0;
-        }
-
-        public List<RecommendedResult> RecommendedResults { get; set; }
-
-    }
+    }   
 }
