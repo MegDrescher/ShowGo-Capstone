@@ -1,10 +1,10 @@
-﻿@model ShowGo.Models.Artist
+﻿@model ShowGo.Models.Concertgoer
 
 @{
     ViewBag.Title = "Create";
 }
 
-<h2>Create your ShowGo Artist Promo Account</h2>
+<h2>Create your ShowGo Concert goer Account</h2>
 
 
 @using (Html.BeginForm()) 
@@ -12,17 +12,9 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Connect your band to other local concert goers. To get started create your promo account below.</h4>
+        <h4>Connect to your favorite bands and artists by submitting a simple ShowGo survey. To check out concerts in your area, create your concert goer account below</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.GenreId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.GenreId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.GenreId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.ApplicationId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">

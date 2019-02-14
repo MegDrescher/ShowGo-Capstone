@@ -1,0 +1,42 @@
+﻿@model ShowGo.Models.RecommendedResult
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    <h4>RecommendedResult</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.text)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.text)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChoiceId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChoiceId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConcertgoerId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConcertgoerId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RecommendedResultId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

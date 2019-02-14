@@ -266,16 +266,29 @@
     <Content Include="Views\Artist\Delete.cshtml" />
     <Content Include="Views\Artist\Edit.cshtml" />
     <Content Include="Views\Artist\Index.cshtml" />
+    <Content Include="Views\Choice\Create.cshtml" />
+    <Content Include="Views\Choice\Index.cshtml" />
+    <Content Include="Views\Choice\Edit.cshtml" />
+    <Content Include="Views\Choice\Delete.cshtml" />
+    <Content Include="Views\Concert\Create.cshtml" />
+    <Content Include="Views\Concert\Edit.cshtml" />
+    <Content Include="Views\Concert\Delete.cshtml" />
+    <Content Include="Views\Concert\Index.cshtml" />
+    <Content Include="Views\Concertgoer\Create.cshtml" />
+    <Content Include="Views\Concertgoer\Delete.cshtml" />
+    <Content Include="Views\Concertgoer\Edit.cshtml" />
+    <Content Include="Views\Concertgoer\Index.cshtml" />
+    <Content Include="Views\Genre\Create.cshtml" />
+    <Content Include="Views\Genre\Edit.cshtml" />
+    <Content Include="Views\Genre\Delete.cshtml" />
+    <Content Include="Views\Genre\Index.cshtml" />
+    <Content Include="Views\Question\Index.cshtml" />
+    <Content Include="Views\RecommendedResult\Index.cshtml" />
+    <Content Include="Views\RecommendedResult\View.cshtml" />
+    <Content Include="Views\Survey\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Choice\" />
-    <Folder Include="Views\Concertgoer\" />
-    <Folder Include="Views\Concert\" />
-    <Folder Include="Views\Genre\" />
-    <Folder Include="Views\Question\" />
-    <Folder Include="Views\RecommendedResult\" />
-    <Folder Include="Views\Survey\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
