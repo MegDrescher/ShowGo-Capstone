@@ -8,7 +8,4 @@
         public string SurveyTitle { get; set; }
 
     }
-
-
-
 }
