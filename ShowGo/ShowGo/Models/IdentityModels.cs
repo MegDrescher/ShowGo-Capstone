@@ -50,6 +50,7 @@ namespace ShowGo.Models
         public DbSet<Question> Questions { get; set; }
 
         public DbSet<Choice> Choices { get; set; }
+        public static object Question { get; internal set; }
 
         //protected override void OnModelCreating(DbModelBuilder modelBuilder)
         //{

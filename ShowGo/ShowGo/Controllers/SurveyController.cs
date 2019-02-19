@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ShowGo.Models;
 
 namespace ShowGo.Controllers
 {
@@ -23,13 +25,30 @@ namespace ShowGo.Controllers
         // GET: Survey/Create
         public ActionResult Create()
         {
+            //Survey survey = new Survey();
+            
+            {
+                
+               
+
+            }
+
             return View();
         }
 
         // POST: Survey/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(IEnumerable<Question> questionList)
         {
+            //Survey survey = new Survey();
+            //foreach (var item in questionList)
+            //{
+               
+
+            //}
+           
+            
             try
             {
                 // TODO: Add insert logic here

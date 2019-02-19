@@ -10,6 +10,9 @@ namespace ShowGo.Models
         [Key]
         public int ChoiceId { get; set; }
         public string Text { get; set; }
+        public virtual Question Question { get; set; }
+
+       
 
     }
 
