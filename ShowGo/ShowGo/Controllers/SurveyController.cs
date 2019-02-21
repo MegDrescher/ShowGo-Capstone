@@ -60,7 +60,7 @@ namespace ShowGo.Controllers
                 survey.Questions.Add(text);
             }
             db.Surveys.Add(survey);
-            await.db.SaveChangesAsync();
+            db.SaveChangesAsync();
             return RedirectToAction("Index");
                     
         }
