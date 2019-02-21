@@ -10,6 +10,8 @@ namespace ShowGo.Controllers
 {
     public class SurveyController : Controller
     {
+      
+
         // GET: Survey
         public ActionResult Index()
         {
@@ -64,6 +66,7 @@ namespace ShowGo.Controllers
         // GET: Survey/Edit/5
         public ActionResult Edit(int id)
         {
+
             return View();
         }
 

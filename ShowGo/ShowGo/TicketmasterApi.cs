@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace ShowGo
 {
-    public class Ticketmaster : ApiController
+    public class TicketmasterApi : ApiController
     {
         // GET api/<controller>
         public IEnumerable<string> Get()

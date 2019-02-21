@@ -18,14 +18,34 @@ namespace ShowGo.Models
 
     public class MultipleChoiceQuestion
     {
-        public List<string> Choices { get; private set; }
+        public string question;
 
-        public int CorrectAnswer { get; set; }
+        //list of possible answers to the question
+        public string[] choices;
 
+        private int answer;
+
+       
         public MultipleChoiceQuestion()
         {
-            Choices = new List<string>();
+            choices = new string[5];
         }
+
+        //gets and sets the question 
+        public string Question { get => question; set => question = value; }
+
+        //gets the indexed question as a string 
+
+        public string GetChoices(int index) => choices[index];
+
+        //set the choice at the correct index
+        public void SetChoice(int index, string value) => choices[index] = value;
+
+        // Gets and sets the correct answer as an index
+        public int Answer { get => answer; set => answer = value; }
+
+
+
     }
 }
 
