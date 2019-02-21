@@ -38,6 +38,8 @@ namespace ShowGo.Models
 
         public DbSet<Survey> Surveys { get; set; }
         public DbSet<Concert> Concerts { get; set; }
+
+        public DbSet<Answer> Answers { get; set; }
         public DbSet<Genre> Genres { get; set; }
 
         public DbSet<Artist> Artists { get; set; }

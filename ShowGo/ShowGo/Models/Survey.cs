@@ -12,10 +12,13 @@ namespace ShowGo.Models
         public string SurveyTitle { get; set; }
 
         public virtual ICollection<Question> Questions { get; set; }
+        public ApplicationUser CreatedBy { get; internal set; }
 
-        public virtual ICollection<Choice> Choices { get; set; }
+        //public virtual ICollection<Choice> Choices { get; set; }
 
-
-
+        public Survey()
+        {
+            Questions = new List<Question>();
+        }
     }
 }

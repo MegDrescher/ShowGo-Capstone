@@ -16,5 +16,8 @@ namespace ShowGo.API
 
         private static string apiLinkGeocoder = "https://maps.googleapis.com/maps/api/geocode/json?key=" + key + "&address";
         public static string APILinkGeocoder { get { return apiLinkGeocoder; } }
+
+        private static string APILinkTicketmaster = "https://app.ticketmaster.com/discovery/v2/events.json?apikey= key";
+
     }
 }

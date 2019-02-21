@@ -2,70 +2,79 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using ShowGo.Models;
+using ShowGo.ViewModels;
 
 namespace ShowGo.Controllers
 {
     public class SurveyController : Controller
     {
-      
 
+        private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Survey
         public ActionResult Index()
-        {
-            return View();
+        {   
+
+            return View(db.Surveys.ToList());
         }
 
         // GET: Survey/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
+        public ActionResult Details(int? id)
+        {   
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);         
+            }
+            Survey survey = db.Surveys.Find(id);
+            if (survey == null)
+            {
+                return HttpNotFound();
+            }
+            return View(survey);
         }
 
         // GET: Survey/Create
         public ActionResult Create()
         {
             //Survey survey = new Survey();
-            
-            {
-                
-               
-
-            }
-
-            return View();
+            SurveyQuestionViewModel surveyViewModel = new SurveyQuestionViewModel();
+            surveyViewModel.SurveyQuestions.Add(new Question());
+            return View(surveyViewModel);
         }
 
         // POST: Survey/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IEnumerable<Question> questionList)
+        public ActionResult Create(SurveyQuestionViewModel questions)
         {
-            //Survey survey = new Survey();
-            //foreach (var item in questionList)
-            //{
-               
-
-            //}
-           
-            
-            try
+            Survey survey = new Survey();
+            survey.SurveyTitle = questions.SurveyTitle;
+            ApplicationUser concertGoer = db.Users.Find(User.Identity.GetUserId());
+            survey.CreatedBy = concertGoer;
+            foreach (var text in questions.SurveyQuestions)
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                survey.Questions.Add(text);
             }
-            catch
-            {
-                return View();
-            }
+            db.Surveys.Add(survey);
+            await.db.SaveChangesAsync();
+            return RedirectToAction("Index");
+                    
         }
 
         // GET: Survey/Edit/5
-        public ActionResult Edit(int id)
-        {
+        public ActionResult Edit(int? id)
+        {   
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            
+
 
             return View();
         }
