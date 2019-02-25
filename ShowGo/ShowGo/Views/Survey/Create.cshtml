@@ -56,7 +56,9 @@
         $("#addQuestion").click(function () {
             var button = $("#addQuestion");
             var Id = $("#questionform : text").length;
-            $("#questionform").append('<div class="form-group"><label class="control-label col-sm-2">Question ' + (Id + 1) + '</label><div class = "col-sm-8"><input class="form-control" name ="SurveyQuestions [' + Id + '].SurveyQuestion" type="text" value></div></div>')
+            $("#questionform").append('<div class="form-group"><label class="control-label col-sm-2"> Question ' + (Id + 1) + '</label><div class = "col-sm-8"><input class="form-control" name ="SurveyQuestions [' + Id + '].SurveyQuestion" type="text" value></div></div>')
+            $("#questionform div.form-group:last").append(button);
         })
+    })
 </script>
 
