@@ -302,6 +302,7 @@
     <Content Include="Views\Survey\Index.cshtml" />
     <Content Include="Views\Survey\Create.cshtml" />
     <Content Include="Views\Survey\Delete.cshtml" />
+    <Content Include="Views\Survey\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

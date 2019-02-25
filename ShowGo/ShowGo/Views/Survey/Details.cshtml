@@ -1,0 +1,26 @@
+﻿@model ShowGo.Models.Survey
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>@Html.DisplayFor(model => model.SurveyTitle</h4>
+    <hr />
+    <ul class="list-group">
+        @foreach (var question in Model.Questions)
+        {
+            <li class="list-group-item">
+                @Html.DisplayFor(model => question.SurveyQuestion)
+            </li>
+        }
+
+    </ul>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SurveyId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
