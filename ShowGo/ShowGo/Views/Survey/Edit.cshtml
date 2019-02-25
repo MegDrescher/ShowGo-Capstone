@@ -1,0 +1,63 @@
+﻿@model ShowGo.Models.SurveyViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken())
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger"})
+    @Html.HiddenFor(model.SurveyId))
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.SurveyTitle)
+            @Html.TextBoxFor(model => model.SurveyTitle)
+        </div>
+    
+        <hr />
+        <div id="questionform">
+            @for (int i = 0; i < Model.Questions.Count; i++)
+            {
+                @Html.HiddenFor(model => model.Questions[i].Id)
+                @Html.HiddenFor(model => model.Questions[i].SurveyId)
+
+                <div class="form-group">
+                    <label>Question @(i +1)</label>
+                    @Html.TextBoxFor(x => x.SurveyQuestions[i].SurveyQuestion)
+                </div>
+            }
+        </div>
+
+        <input type="button" id="addQuestion" value="add Question" />
+
+        <div class="form-group">
+            <div class="col-med-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default"/>
+            </div>
+        </div>
+    }
+
+    <div>
+           
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+    
+    @section Sripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        }
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var Id = $("#questionform :text").length;
+            $("#questionform").append('<div class="form-group"> <lable>Question' + (Id + 1) + '</label><input name="SurveyQuestions[' + Id + '].SurveyQuestion" type="text" value></div>');
+        })
+    })
+    </script>
+    
+
+   
+</div>

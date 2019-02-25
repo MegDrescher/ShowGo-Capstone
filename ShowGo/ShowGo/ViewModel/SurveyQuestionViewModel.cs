@@ -7,12 +7,12 @@ using ShowGo.Models;
 namespace ShowGo.ViewModels
 {
     public class SurveyQuestionViewModel
-    {   
-        //public class SurveyViewModel
-        //{
-        //    //this.SurveyQuestions = new List<Question>();
-           
-        //}
+    {
+        public class SurveyViewModel
+        {
+            //this.SurveyQuestions = new List<Question>();
+
+        }
 
         public int SurveyId { get; set; }
         public String SurveyTitle { get; set; }
