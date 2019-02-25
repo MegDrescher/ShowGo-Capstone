@@ -19,6 +19,7 @@ namespace ShowGo.Models
         public virtual Survey Survey { get; set; }
 
         public virtual List<Answer> Answers { get; set; }
+        public int Id { get; internal set; }
 
         public Question()
         {

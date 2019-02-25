@@ -27,7 +27,7 @@ namespace ShowGo.Models
 
 
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("ShowGo", throwIfV1Schema: false)
         {
         }
 

@@ -10,7 +10,8 @@ using ShowGo.Models;
 using ShowGo.ViewModels;
 
 namespace ShowGo.Controllers
-{
+{   
+    [Authorize]
     public class SurveyController : Controller
     {
 
@@ -61,8 +62,7 @@ namespace ShowGo.Controllers
             }
             db.Surveys.Add(survey);
             db.SaveChangesAsync();
-            return RedirectToAction("Index");
-                    
+            return RedirectToAction("Index");                   
         }
 
         // GET: Survey/Edit/5
@@ -73,48 +73,121 @@ namespace ShowGo.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            
+            SurveyQuestionViewModel surveyQuestionViewModel = new SurveyQuestionViewModel();
+            surveyQuestionViewModel = db.Survey
+                .Where(x => x.SurveyId == id)
+                .Select(x => new SurveyQuestionViewModel
+                {
+                    SurveyTitle = x.SurveyTitle,
+                    SurveyId = x.Id,
+                    SurveyQuestions = x.Questions
+                }).FirstorDefault();
 
-
-            return View();
+        
+            return View(surveyQuestionViewModel);
         }
 
         // POST: Survey/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Survey survey, SurveyQuestionViewModel surveyViewModel)
         {
-            try
+            survey.SurveyTitle = surveyViewModel.SurveyTitle;
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                foreach (var question in surveyViewModel.SurveyQuestions)
+                {
+                    var existingQuestion = db.Questions.Where(x => x.QuestionId == question.Id).FirstOrDefault();
+                    if (existingQuestion == null)
+                    {
+                        question.SurveyId = survey.SurveyId;
+                        db.Questions.Add(question);                   
+                    }
+                    else
+                    {
+                        existingQuestion.SurveyQuestion = question.SurveyQuestion;
+                        survey.Questions.Add(existingQuestion);
+                    }
+                }
 
+                db.Entry(survey).State = EntityState.Modified;
+
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(surveyViewModel);
         }
 
         // GET: Survey/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int? id)
         {
-            return View();
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Survey survey = db.Surveys.Find(id);
+            if (survey == null)
+            {
+                return HttpNotFound();
+            }
+            return View(survey);
         }
 
         // POST: Survey/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [HttpPost, ActionName ("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            Survey survey = db.Surveys.Find(id);
+            db.Surveys.Remove(survey);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
-                return RedirectToAction("Index");
-            }
-            catch
+        public ActionResult TakeSurvey(int id)
+        {
+            SurveyResponseViewModel surveyResponse = new SurveyResponseViewModel();
+            surveyResponse = db.Surveys
+                .Where(x => x.SurveyId == id)
+                .Select(x => new SurveyResponseViewModel
+                {
+                    SurveyId = x.Id,
+                    SurveyTitle = x.SurveyTitle,
+                    SurveyQuestions = x.Questions
+                }).FirstOrDefault();
+            foreach (var item in surveyResponse.SurveyQuestions)
             {
-                return View();
+                Answer answer = new Answer();
+                answer.Question = item;
+                answer.QuestionId = item.Id;
+                surveyResponse.QuestionAnswers.Add(answer);
             }
+            return View(surveyResponse);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult TakeSurvey(SurveyResponseViewModel SurveyResponseViewModel)
+        {
+            ApplicationUser concertgoer = db.Users.Find(User.Identity.GetUserId());   
+            
+            foreach(var response in SurveyResponseViewModel.QuestionAnswers)
+            {
+                response.AnsweredBy = concertgoer;
+                var question = db.Questions.Where(x => x.Id == response.QuestionId).FirstOrDefault();
+                question.Answers.Add(response);
+            }
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            
+            }
+            base.Dispose(disposing);
         }
     }
 }
