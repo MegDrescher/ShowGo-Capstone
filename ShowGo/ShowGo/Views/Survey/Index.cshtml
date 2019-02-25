@@ -1,4 +1,4 @@
-﻿@model ShowGo.Models.Survey
+﻿@model IEnumerable<ShowGo.Models.Survey>
 
 @{
     ViewBag.Title = "Index";
@@ -6,21 +6,36 @@
 
 <h2>Index</h2>
 
-<div>
-    <h4>Survey</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.SurveyTitle)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SurveyTitle)
-        </dd>
-
-    </dl>
-</div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.SurveyId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Create New", "Create")
 </p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SurveyTitle)    
+        </th>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+    </tr>
+
+    @foreach (var survey in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => survey.SurveyTitle)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = survey.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = surveyId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = surveyId }) |
+            </td>
+
+            <td>
+                @Html.DisplayFor(model => survey.CreatedBy.Email)
+            </td>
+        </tr>
+    }
+</table>
