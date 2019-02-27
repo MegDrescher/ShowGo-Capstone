@@ -39,31 +39,20 @@ namespace ShowGo.Models
         public DbSet<Survey> Surveys { get; set; }
         public DbSet<Concert> Concerts { get; set; }
 
-        public DbSet<Answer> Answers { get; set; }
-        public DbSet<Genre> Genres { get; set; }
+         public DbSet<Answer> Answers { get; set; }
+    
 
         public DbSet<Artist> Artists { get; set; }
 
         public DbSet<Concertgoer> Concertgoers { get; set; }
 
-        public DbSet<RecommendedResult> RecommendedResults { get; set; }
+        //public DbSet<RecommendedResult> RecommendedResults { get; set; }
 
 
         public DbSet<Question> Questions { get; set; }
 
         public DbSet<Choice> Choices { get; set; }
         public static object Question { get; internal set; }
-
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<RecommendedResult>()
-        //    .HasRequired(x => x.Question)
-        //    .WithMany()
-        //    .HasForeignKey(x => x.QuestionId)
-        //    .WillCascadeOnDelete(false);
-
-        //    base.OnModelCreating(modelBuilder);
-        //}
 
     }
 }
