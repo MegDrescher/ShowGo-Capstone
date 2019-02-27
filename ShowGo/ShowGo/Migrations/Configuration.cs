@@ -4,6 +4,7 @@ namespace ShowGo.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using ShowGo.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<ShowGo.Models.ApplicationDbContext>
     {
@@ -14,10 +15,48 @@ namespace ShowGo.Migrations
 
         protected override void Seed(ShowGo.Models.ApplicationDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            context.Survey.AddOrUpdate(
+                survey => new { survey.Id, survey.Title },
+                new Survey { Id = 1, Title = "What is your favorite music genre?" });
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+            context.SaveChanges();
+
+            context.Questions.AddOrUpdate(
+                question => new { question.Body, question.GetType, question.SurveyId},
+                new Question
+                {
+                    Body = "On a scale of 0 to 9 how often do you listen to Rock?",
+                    Type = QuestionType.Numeric,
+                    SurveyId = 1
+                },
+                new Question
+                {
+                    Body = "On a scale of 0 to 9 how often do you listen to Country?",
+                    Type = QuestionType.Numeric,
+                    SurveyId = 1
+                },
+                new Question
+                {
+                    Body = "On a scale of 0 to 9 how often do you listen to EDM?",
+                    Type = QuestionType.Numeric,
+                    SurveyId = 1
+                },
+                new Question
+                {
+                    Body = "Do you live in Wisconsin?",
+                    Type = QuestionType.YesNo,
+                    SurveyId = 1
+                });
+
+            context.SaveChanges();
+        }
+    }
+}
+
+
+                }
+
+
         }
     }
 }

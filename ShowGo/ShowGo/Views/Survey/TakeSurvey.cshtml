@@ -1,0 +1,13 @@
+﻿@model ShowGo.Models.Survey
+
+@{
+    ViewBag.Title = "TakeSurvey";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <h2>@Model.ShowGo</h2>
+}
+

@@ -10,6 +10,7 @@ namespace ShowGo.Models
         [Key]
         public int QuestionId { get; set; }
         
+        public string Body { get; set; }
         public string SurveyQuestion { get; set; }
 
         public int SurveyId { get; set; }
@@ -19,7 +20,8 @@ namespace ShowGo.Models
         public virtual Survey Survey { get; set; }
 
         public virtual List<Answer> Answers { get; set; }
-        public int Id { get; internal set; }
+    
+        public string Body { get; internal set; }
 
         public Question()
         {

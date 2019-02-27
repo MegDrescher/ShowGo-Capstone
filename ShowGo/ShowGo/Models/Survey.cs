@@ -14,6 +14,7 @@ namespace ShowGo.Models
         public virtual ICollection<Question> Questions { get; set; }
         public ApplicationUser CreatedBy { get; internal set; }
         public int Id { get; internal set; }
+        public string Title { get; internal set; }
 
         //public virtual ICollection<Choice> Choices { get; set; }
 
