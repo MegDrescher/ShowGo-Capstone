@@ -17,9 +17,11 @@ namespace ShowGo.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext db;
 
         public AccountController()
         {
+            db = new ApplicationDbContext();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
@@ -139,6 +141,7 @@ namespace ShowGo.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.Roles = new SelectList(db.Roles.ToList(), "Name", "Name");
             return View();
         }
 
@@ -155,6 +158,14 @@ namespace ShowGo.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    Concertgoer userTableData = new Concertgoer();
+                    userTableData.FirstName = model.FirstName;
+                    userTableData.LastName = model.LastName;
+                    userTableData.ApplicationId = user.Id;
+
+                    db.Concertgoers.Add(userTableData);
+                    db.SaveChanges();
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
@@ -165,6 +176,7 @@ namespace ShowGo.Controllers
 
                     return RedirectToAction("Index", "Home");
                 }
+                ViewBag.Roles = new SelectList(db.Roles.ToList(), "Name", "Name");
                 AddErrors(result);
             }
 
