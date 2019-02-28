@@ -46,12 +46,13 @@ namespace ShowGo.Models
 
         public DbSet<Concertgoer> Concertgoers { get; set; }
 
+        public DbSet<Genre> Genres { get; set; }
+
         //public DbSet<RecommendedResult> RecommendedResults { get; set; }
 
 
         public DbSet<Question> Questions { get; set; }
 
-        public DbSet<Choice> Choices { get; set; }
         public static object Question { get; internal set; }
 
     }

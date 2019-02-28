@@ -22,22 +22,28 @@ namespace ShowGo.Migrations
             context.SaveChanges();
 
             context.Questions.AddOrUpdate(
-                question => new { question.Body, question.GetType, question.SurveyId},
+                question => new { question.Body, question.Type, question.SurveyId},
                 new Question
                 {
-                    Body = "On a scale of 0 to 9 how often do you listen to Rock?",
+                    Body = "On a scale of 0 to 5 how often do you listen to Rock?",
                     Type = QuestionType.Numeric,
                     SurveyId = 1
                 },
                 new Question
                 {
-                    Body = "On a scale of 0 to 9 how often do you listen to Country?",
+                    Body = "On a scale of 0 to 5 how often do you listen to Country?",
                     Type = QuestionType.Numeric,
                     SurveyId = 1
                 },
                 new Question
                 {
-                    Body = "On a scale of 0 to 9 how often do you listen to EDM?",
+                    Body = "On a scale of 0 to 5 how often do you listen to EDM?",
+                    Type = QuestionType.Numeric,
+                    SurveyId = 1
+                },
+                new Question
+                {
+                    Body = "On a scale of 0 to 5 how often do you listen to Blues?",
                     Type = QuestionType.Numeric,
                     SurveyId = 1
                 },
