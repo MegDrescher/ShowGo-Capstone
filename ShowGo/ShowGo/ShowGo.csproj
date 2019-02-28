@@ -186,14 +186,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArtistController.cs" />
-    <Compile Include="Controllers\ChoiceController.cs" />
     <Compile Include="Controllers\ConcertController.cs" />
     <Compile Include="Controllers\ConcertgoerController.cs" />
     <Compile Include="Controllers\GenreController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\QuestionController.cs" />
-    <Compile Include="Controllers\RecommendedResultController.cs" />
     <Compile Include="Controllers\SurveyController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -214,6 +212,11 @@
     <Compile Include="Models\Question.cs" />
     <Compile Include="Models\QuestionType.cs" />
     <Compile Include="Models\Survey.cs" />
+    <Compile Include="Models\SurveyStorage\ShowGoContext.cs" />
+    <Compile Include="Models\SurveyStorage\AnswerStorage.cs" />
+    <Compile Include="Models\SurveyStorage\IStorage.cs" />
+    <Compile Include="Models\SurveyStorage\QuestionsStorage.cs" />
+    <Compile Include="Models\SurveyStorage\SurveyStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\SurveyQuestionViewModel.cs" />
@@ -280,10 +283,6 @@
     <Content Include="Views\Artist\Delete.cshtml" />
     <Content Include="Views\Artist\Edit.cshtml" />
     <Content Include="Views\Artist\Index.cshtml" />
-    <Content Include="Views\Choice\Create.cshtml" />
-    <Content Include="Views\Choice\Index.cshtml" />
-    <Content Include="Views\Choice\Edit.cshtml" />
-    <Content Include="Views\Choice\Delete.cshtml" />
     <Content Include="Views\Concert\Create.cshtml" />
     <Content Include="Views\Concert\Edit.cshtml" />
     <Content Include="Views\Concert\Delete.cshtml" />

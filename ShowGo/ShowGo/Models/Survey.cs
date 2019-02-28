@@ -4,7 +4,7 @@ namespace ShowGo.Models
 {
     public class Survey
     {
-        private List<MultipleChoiceQuestion> question;
+       
 
         //[Key]
         public int SurveyId { get; set; }

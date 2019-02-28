@@ -15,7 +15,7 @@ namespace ShowGo.Migrations
 
         protected override void Seed(ShowGo.Models.ApplicationDbContext context)
         {
-            context.Survey.AddOrUpdate(
+            context.Surveys.AddOrUpdate(
                 survey => new { survey.Id, survey.Title },
                 new Survey { Id = 1, Title = "What is your favorite music genre?" });
 
@@ -59,10 +59,3 @@ namespace ShowGo.Migrations
     }
 }
 
-
-                }
-
-
-        }
-    }
-}

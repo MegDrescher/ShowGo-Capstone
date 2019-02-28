@@ -25,10 +25,16 @@ namespace ShowGo.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         internal readonly IEnumerable<object> Survey;
+        private string v;
 
         public ApplicationDbContext()
             : base("ShowGo", throwIfV1Schema: false)
         {
+        }
+
+        public ApplicationDbContext(string v)
+        {
+            this.v = v;
         }
 
         public static ApplicationDbContext Create()
@@ -53,7 +59,7 @@ namespace ShowGo.Models
 
         public DbSet<Question> Questions { get; set; }
 
-        public static object Question { get; internal set; }
+        //public static object Question { get; internal set; }
 
     }
 }
