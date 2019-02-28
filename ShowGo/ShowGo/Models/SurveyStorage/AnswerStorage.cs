@@ -11,7 +11,6 @@ namespace ShowGo.Web.Models.SurveyStorage
 {
     public class AnswerStorage : IStorage<Answer>
     {
-        private readonly ShowGoContext_context = new ShowGoContext();
 
         public void Create(Answer answer)
         {
