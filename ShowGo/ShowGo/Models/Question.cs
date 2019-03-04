@@ -5,7 +5,9 @@ using System.ComponentModel.DataAnnotations;
 namespace ShowGo.Models
 {
     public class Question
-    {   
+    {
+        internal int Id;
+
         [Key]
         public int QuestionId { get; set; }
         
