@@ -11,6 +11,6 @@ namespace ShowGo.Models.SurveyStorage
         T FirstOrDefault(Func<T, bool> predicate);
         T FirstOrDefault();
         T Find(int id);
-        IEnumerable<T> All();
+        //IEnumerable<T> All();
     }
 }

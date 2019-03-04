@@ -18,6 +18,7 @@ namespace ShowGo.Models
         public int QuestionId { get; set; } 
 
         public virtual Question Question { get; set; }
+        public ApplicationUser AnsweredBy { get; internal set; }
 
         //public virtual ApplicationUser AnsweredBy { get; set; }
 

@@ -14,7 +14,7 @@ namespace ShowGo.Web.Models.SurveyStorage
 
         public void Create(Answer answer)
         {
-            _context.Answers.Add(answer);
+            context.Answers.Add(answer);
             Context.SaveChanges();
         }
 
@@ -30,12 +30,12 @@ namespace ShowGo.Web.Models.SurveyStorage
 
         public Answer Find(int id)
         {
-            return _context.Answers.Find(id);
+            return context.Answers.Find(id);
         }
 
         public IEnumerable<Answer> All()
         {
-            return _context.Answers.ToList();
+            return context.Answers.ToList();
         }
     }
  
