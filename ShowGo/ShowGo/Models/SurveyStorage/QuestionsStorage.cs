@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ShowGo.Models;
+using ShowGo.Models.SurveyStorage;
 
 namespace ShowGo.Web.Models.SurveyStorage
 {
