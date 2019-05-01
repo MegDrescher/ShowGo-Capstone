@@ -85,7 +85,7 @@ namespace ShowGo.Controllers
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, model.RememberMe });
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
@@ -158,10 +158,12 @@ namespace ShowGo.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    Concertgoer userTableData = new Concertgoer();
-                    userTableData.FirstName = model.FirstName;
-                    userTableData.LastName = model.LastName;
-                    userTableData.ApplicationId = user.Id;
+                    Concertgoer userTableData = new Concertgoer
+                    {
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        ApplicationId = user.Id
+                    };
 
                     db.Concertgoers.Add(userTableData);
                     db.SaveChanges();
@@ -326,7 +328,7 @@ namespace ShowGo.Controllers
             {
                 return View("Error");
             }
-            return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
+            return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, model.ReturnUrl, model.RememberMe });
         }
 
         //

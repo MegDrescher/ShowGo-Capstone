@@ -52,13 +52,15 @@ namespace ShowGo.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(SurveyQuestionViewModel questions)
         {
-            Survey survey = new Survey();
-            survey.SurveyTitle = questions.SurveyTitle;
+            Survey survey = new Survey
+            {
+                SurveyTitle = questions.SurveyTitle
+            };
             ApplicationUser concertGoer = db.Users.Find(User.Identity.GetUserId());
             survey.CreatedBy = concertGoer;
             foreach (var text in questions.SurveyQuestions)
             {
-                survey.Questions.Add(text);
+                survey.Question.Add(text);
             }
             db.Surveys.Add(survey);
             db.SaveChangesAsync();
@@ -105,7 +107,7 @@ namespace ShowGo.Controllers
                     else
                     {
                         existingQuestion.SurveyQuestion = question.SurveyQuestion;
-                        survey.Questions.Add(existingQuestion);
+                        survey.Question.Add(existingQuestion);
                     }
                 }
 
@@ -152,13 +154,15 @@ namespace ShowGo.Controllers
                 {
                     SurveyId = x.Id,
                     SurveyTitle = x.SurveyTitle,
-                    SurveyQuestions = x.Questions
+                    SurveyQuestions = x.Question
                 }).FirstOrDefault();
             foreach (var item in surveyResponse.SurveyQuestions)
             {
-                Answer answer = new Answer();
-                answer.Question = item;
-                answer.QuestionId = item.Id;
+                Answer answer = new Answer
+                {
+                    Question = item,
+                    QuestionId = item.Id
+                };
                 surveyResponse.QuestionAnswers.Add(answer);
             }
             return View(surveyResponse);

@@ -22,15 +22,19 @@ namespace ShowGo
 
             if (!roleManager.RoleExists("Artist"))
             {
-                var role = new IdentityRole();
-                role.Name = "Artist";
+                var role = new IdentityRole
+                {
+                    Name = "Artist"
+                };
                 roleManager.Create(role);
             }
 
             if (!roleManager.RoleExists("Concertgoer"))
             {
-                var role = new IdentityRole();
-                role.Name = "Concergoer";
+                var role = new IdentityRole
+                {
+                    Name = "Concergoer"
+                };
                 roleManager.Create(role);
             }
 

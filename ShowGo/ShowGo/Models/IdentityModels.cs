@@ -25,7 +25,7 @@ namespace ShowGo.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         internal readonly IEnumerable<object> Survey;
-        private string v;
+        private readonly string v;
 
         public ApplicationDbContext()
             : base("ShowGo", throwIfV1Schema: false)
