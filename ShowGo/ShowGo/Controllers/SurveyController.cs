@@ -60,7 +60,7 @@ namespace ShowGo.Controllers
             survey.CreatedBy = concertGoer;
             foreach (var text in questions.SurveyQuestions)
             {
-                survey.Question.Add(text);
+                survey.Questions.Add(text);
             }
             db.Surveys.Add(survey);
             db.SaveChangesAsync();
@@ -107,7 +107,7 @@ namespace ShowGo.Controllers
                     else
                     {
                         existingQuestion.SurveyQuestion = question.SurveyQuestion;
-                        survey.Question.Add(existingQuestion);
+                        survey.Questions.Add(existingQuestion);
                     }
                 }
 
@@ -154,7 +154,7 @@ namespace ShowGo.Controllers
                 {
                     SurveyId = x.Id,
                     SurveyTitle = x.SurveyTitle,
-                    SurveyQuestions = x.Question
+                    //SurveyQuestions = x.Questions
                 }).FirstOrDefault();
             foreach (var item in surveyResponse.SurveyQuestions)
             {
